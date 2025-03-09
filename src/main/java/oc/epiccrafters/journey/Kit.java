@@ -17,17 +17,14 @@ public class Kit {
     }
 
     public void showKitBlocks() {
-        System.out.println("Kit blocks number: " + blocks.size());
+        this.getKitMap().forEach((k, v) -> System.out.println(k + ": " + v));
     }
 
     public Map<String, Integer> getKitMap() {
         Map<String, Integer> blocksMap = new HashMap<String, Integer>();
         blocks.forEach(block -> {
-            if (blocksMap.containsKey(block.getClass().getSimpleName())) {
-                blocksMap.put(block.getClass().getSimpleName(), blocksMap.get(block.getClass().getSimpleName()) + 1);
-            } else {
-                blocksMap.put(block.getClass().getSimpleName(), 1);
-            }
+            String blockName = block.getClass().getSimpleName();
+            blocksMap.merge(blockName, 1, Integer::sum);
         });
         return blocksMap;
     }

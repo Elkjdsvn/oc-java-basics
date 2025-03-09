@@ -2,20 +2,14 @@ package oc.epiccrafters.journey.blocks;
 
 import java.util.function.Predicate;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import oc.epiccrafters.journey.LockedDoorException;
 
 public class Door extends Block {
     private boolean isLocked;
-    private final static Logger logger = LogManager.getLogger(Door.class);
 
-    public Door(final int width, final int height, final int depth, final boolean isLocked) {
-        super(width, height, depth);
+    public Door(final int width, final int height, final int depth, final boolean isLocked, final Color color) {
+        super(width, height, depth, color);
         this.isLocked = isLocked;
-        this.color = Color.BLUE;
-        logger.info("New door");
     }
 
     public boolean isDoorLocked() {

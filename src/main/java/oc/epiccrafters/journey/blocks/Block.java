@@ -6,10 +6,14 @@ public abstract class Block implements IBlock {
     protected int depth;
     protected Color color;
 
-    public Block(final int width, final int height, final int depth) {
+    public Block(final int width, final int height, final int depth, final Color color) {
+        if (width <= 0 || height <= 0 || depth <= 0) {
+            throw new IllegalArgumentException("Block dimensions must be positive");
+        }
         this.width = width;
         this.height = height;
         this.depth = depth;
+        this.color = color;
     }
 
     public int getWidth() {
