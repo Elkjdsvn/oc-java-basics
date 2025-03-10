@@ -1,5 +1,8 @@
 package oc.epiccrafters.journey.blocks;
 
+import java.util.stream.Stream;
+import static oc.epiccrafters.journey.blocks.BlockConstants.*;
+
 public abstract class Block implements IBlock {
     protected int width;
     protected int height;
@@ -7,8 +10,11 @@ public abstract class Block implements IBlock {
     protected Color color;
 
     public Block(final int width, final int height, final int depth, final Color color) {
-        if (width <= 0 || height <= 0 || depth <= 0) {
+        if (width < MIN_WIDTH || height <= MIN_HEIGHT || depth <= MIN_DEPTH) {
             throw new IllegalArgumentException("Block dimensions must be positive");
+        }
+        if (color == null || !Stream.of(Color.values()).anyMatch(v -> v.name().equals(color.name()))) {
+            throw new IllegalArgumentException("Block color must be defined");
         }
         this.width = width;
         this.height = height;
@@ -27,6 +33,10 @@ public abstract class Block implements IBlock {
 
     public int getDepth() {
         return this.depth;
+    }
+
+    public Color getColor() {
+        return this.color;
     }
 
     public void setColor(Color color) {

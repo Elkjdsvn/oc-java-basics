@@ -17,10 +17,10 @@ public class Kit {
     }
 
     public void showKitBlocks() {
-        this.getKitMap().forEach((k, v) -> System.out.println(k + ": " + v));
+        this.getKitInventory().forEach((k, v) -> System.out.println(k + ": " + v));
     }
 
-    public Map<String, Integer> getKitMap() {
+    public Map<String, Integer> getKitInventory() {
         Map<String, Integer> blocksMap = new HashMap<String, Integer>();
         blocks.forEach(block -> {
             String blockName = block.getClass().getSimpleName();

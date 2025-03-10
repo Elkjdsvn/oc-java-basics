@@ -35,9 +35,11 @@ public class Main {
                         .toList(),
                 keywords);
 
-        System.out.println("You have a starter kit");
-        System.out.println(
-                "What do you want to see next?\n\t1 - Build ideas with the blocks\n\t2 - The number of each blocks in the kit");
+        System.out.println("You have a starter kit\nWhat do you want to see next?\\n" +
+                "\\t1 - Build ideas with the blocks\\n" +
+                "\\t2 - The amount of each block in the kit");
+
+        // Try-with-resources automatically closes the reader
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String choice = reader.readLine();
             switch (choice) {
